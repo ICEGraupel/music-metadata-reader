@@ -8,6 +8,7 @@ use serde_json::{to_string_pretty, to_writer_pretty};
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Metadata {
     index: u32,
+    source: String,
     title: String,
     artist: String,
     picture: String,
@@ -29,6 +30,7 @@ pub fn read_assets() -> Vec<Metadata> {
             if let Ok(info) = tag {
                 let mut meta = Metadata {
                     index,
+                    source: path.to_str().unwrap().to_string(),
                     title: "Unknown".to_string(),
                     artist: "Unknown".to_string(),
                     picture: "Unknown".to_string(),
